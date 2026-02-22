@@ -20,14 +20,16 @@ public class SpringConfig {
 //    }
 
     private final MemberRepository memberRepository;
+    private final BookInfoRepository bookInfoRepository;
 
-    public SpringConfig(MemberRepository memberRepository) {
+    public SpringConfig(MemberRepository memberRepository, BookInfoRepository bookInfoRepository) {
         this.memberRepository = memberRepository;
+        this.bookInfoRepository = bookInfoRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository);
+        return new MemberService(memberRepository, bookInfoRepository);
     }
 
 //    @Bean

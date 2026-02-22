@@ -1,6 +1,7 @@
 package com.staredu.goyangii.service;
 
 import com.staredu.goyangii.domain.Member;
+import com.staredu.goyangii.repository.BookInfoRepository;
 import com.staredu.goyangii.repository.MemberRepository;
 import com.staredu.goyangii.repository.MemoryMemberRepository;
 
@@ -22,11 +23,12 @@ class MemberServiceTest {
 
     MemberService memberService;
     MemoryMemberRepository memberRepository;
+    BookInfoRepository bookInfoRepository;
 
     @BeforeEach
     public void beforeEach() {
         memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
+        memberService = new MemberService(memberRepository, bookInfoRepository);
         
     }
 

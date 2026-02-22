@@ -1,76 +1,68 @@
 package com.staredu.goyangii.service;
 
-import com.staredu.goyangii.domain.Member;
-import com.staredu.goyangii.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import com.staredu.goyangii.domain.bookinfo;
+import com.staredu.goyangii.repository.BookInfoRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@Transactional
+
+@SpringBootTest
 class BookInfoServiceTest {
 
-    //MemberService memberservice = new MemberService();
-    //MemberRepository memberrepository = new MemoryMemberRepository();
+    @Autowired
+    BookInfoService bookInfoService;
 
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
+    @Autowired
+    BookInfoRepository bookInfoRepository;
 
-    @BeforeEach
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-        
-    }
 
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
 
     @Test
-    void 회원가입() throws Exception {
+    void 책_등록() throws Exception {
 
         //Given
-        Member member = new Member();
-        member.setName("Hello");
+        bookinfo bookInfo = new bookinfo();
+        bookInfo.setBookname("Hello");
 
         //When
-        Long saveId = memberService.join(member);
+        Long saveId = bookInfoService.join(bookInfo);
 
         //Then
-        Member findMember = memberRepository.findById(saveId).get();
-        assertThat(findMember.getName()).isEqualTo(member.getName());
+        bookinfo findBookInfo = bookInfoRepository.findById(saveId).get();
+        assertThat(findBookInfo.getBookname()).isEqualTo(bookInfo.getBookname());
 
     }
 
     @Test
-    void 중복_회원_예외() throws Exception {
+    void 중복_책_예외() throws Exception {
 
         //Given
-        Member member1 = new Member();
-        member1.setName("spring");
+        bookinfo bookInfo1 = new bookinfo();
+        bookInfo1.setBookname("spring");
 
-        Member member2 = new Member();
-        member2.setName("spring");
+        bookinfo bookInfo2 = new bookinfo();
+        bookInfo2.setBookname("spring");
 
         //When
-        memberService.join(member1);
+        bookInfoService.join(bookInfo1);
 
 //        try{
 //            memberService.join(member2);
 //        } catch (IllegalStateException e) {
-//            assertThat(e.getMessage()).isEqualTo(expected "이미 존재하는 회원입니다.");
+//            assertThat(e.getMessage()).isEqualTo(expected "이미 존재하는 도서입니다.");
 //        }
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> bookInfoService.join(bookInfo2));
 
-        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+        assertThat(e.getMessage()).isEqualTo("이미 존재하는 도서입니다.");
 
         //Then
     }
 
-    @Test
-    void findOne() {}
 
 }

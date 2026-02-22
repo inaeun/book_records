@@ -1,6 +1,7 @@
 package com.staredu.goyangii.service;
 
 import com.staredu.goyangii.domain.Member;
+import com.staredu.goyangii.repository.BookInfoRepository;
 import com.staredu.goyangii.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,12 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final BookInfoRepository bookInfoRepository;
 
     @Autowired
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository, BookInfoRepository bookInfoRepository) {
         this.memberRepository = memberRepository;
+        this.bookInfoRepository = bookInfoRepository;
     }
 
     /**
