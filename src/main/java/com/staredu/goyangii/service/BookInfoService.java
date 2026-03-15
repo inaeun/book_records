@@ -49,4 +49,9 @@ public class BookInfoService {
         return bookInfoRepository.findAll();
     }
 
+    /**
+     * 책 개별 검색
+     */
+
+
 }
