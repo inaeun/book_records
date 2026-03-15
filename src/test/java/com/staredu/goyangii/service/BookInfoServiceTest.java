@@ -1,6 +1,6 @@
 package com.staredu.goyangii.service;
 
-import com.staredu.goyangii.domain.bookinfo;
+import com.staredu.goyangii.domain.Bookinfo;
 import com.staredu.goyangii.repository.BookInfoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +27,14 @@ class BookInfoServiceTest {
     void 책_등록() throws Exception {
 
         //Given
-        bookinfo bookInfo = new bookinfo();
+        Bookinfo bookInfo = new Bookinfo();
         bookInfo.setBookname("Hello");
 
         //When
         Long saveId = bookInfoService.join(bookInfo);
 
         //Then
-        bookinfo findBookInfo = bookInfoRepository.findById(saveId).get();
+        Bookinfo findBookInfo = bookInfoRepository.findById(saveId).get();
         assertThat(findBookInfo.getBookname()).isEqualTo(bookInfo.getBookname());
 
     }
@@ -43,10 +43,10 @@ class BookInfoServiceTest {
     void 중복_책_예외() throws Exception {
 
         //Given
-        bookinfo bookInfo1 = new bookinfo();
+        Bookinfo bookInfo1 = new Bookinfo();
         bookInfo1.setBookname("spring");
 
-        bookinfo bookInfo2 = new bookinfo();
+        Bookinfo bookInfo2 = new Bookinfo();
         bookInfo2.setBookname("spring");
 
         //When
