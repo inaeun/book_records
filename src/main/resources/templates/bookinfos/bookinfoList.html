@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>제목 작가 장르</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bookinfos : ${bookinfos}">
+                <td th:text="${bookinfos.id}"></td>
+                <td th:text="${bookinfos.bookname}"></td>
+                <td th:text="${bookinfos.author}"></td>
+                <td th:text="${bookinfos.genre}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>

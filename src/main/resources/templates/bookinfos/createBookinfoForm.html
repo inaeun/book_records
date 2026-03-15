@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div class="container">
+    <form action="/bookinfos/new" method="post">
+        <div class="form-group">
+            <label for="bookname">제목</label>
+            <input type="text" id="bookname" name="bookname" placeholder="책 제목을 입력하세요">
+            <label for="author">작가</label>
+            <input type="text" id="author" name="author" placeholder="작가 이름을 입력하세요">
+            <label for="bookname">장르</label>
+            <input type="text" id="genre" name="genre" placeholder="장르를 입력하세요">
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+</body>
+
+</html>

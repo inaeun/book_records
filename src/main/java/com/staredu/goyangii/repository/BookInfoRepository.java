@@ -1,14 +1,14 @@
 package com.staredu.goyangii.repository;
 
-import com.staredu.goyangii.domain.bookinfo;
+import com.staredu.goyangii.domain.Bookinfo;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface BookInfoRepository {
 
-    bookinfo save(bookinfo bookinfo);
-    Optional<bookinfo> findById(Long id);
-    Optional<bookinfo> findByBookname(String bookname);
-    List<bookinfo> findAll();
+    Bookinfo save(Bookinfo bookinfo);
+    Optional<Bookinfo> findById(Long id);
+    Optional<Bookinfo> findByBookname(String bookname);
+    List<Bookinfo> findAll();
 }

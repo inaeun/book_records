@@ -1,6 +1,6 @@
 package com.staredu.goyangii.service;
 
-import com.staredu.goyangii.domain.bookinfo;
+import com.staredu.goyangii.domain.Bookinfo;
 import com.staredu.goyangii.repository.BookInfoRepository;
 import com.staredu.goyangii.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +25,15 @@ public class BookInfoService {
     /**
      *책 정보 추가
      */
-    public Long join(bookinfo bookInfo) {
+    public Long join(Bookinfo bookinfo) {
 
-        validateDuplicateBookInfo(bookInfo);
-        bookInfoRepository.save(bookInfo);
+        validateDuplicateBookInfo(bookinfo);
+        bookInfoRepository.save(bookinfo);
 
-        return bookInfo.getId();
+        return bookinfo.getId();
     }
 
-    private void validateDuplicateBookInfo(bookinfo bookInfo) {
+    private void validateDuplicateBookInfo(Bookinfo bookInfo) {
         bookInfoRepository.findByBookname(bookInfo.getBookname())
                 .ifPresent(b -> {
                     throw new IllegalStateException("이미 존재하는 도서입니다.");
@@ -44,7 +44,7 @@ public class BookInfoService {
     /**
      * 전체 책 조회
      */
-    public List<bookinfo> findBookInfo() {
+    public List<Bookinfo> findBookinfo() {
 
         return bookInfoRepository.findAll();
     }
