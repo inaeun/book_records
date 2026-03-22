@@ -10,13 +10,12 @@ public class Records {
 
     private Date date;
     private Integer pages;
-    private Text inspirations;
+    private String inspirations;
 
     @ManyToOne
     @JoinColumn(name = "Bookinfo_bookname")
     private Bookinfo bookinfo;
 
-    public Records(Bookinfo bookinfo, Date date, Integer pages, Text inspirations) {}
 
     public void setDate(Date date) {
         this.date = date;
@@ -32,10 +31,10 @@ public class Records {
         return pages;
     }
 
-    public void setInspirations(Text inspirations) {
+    public void setInspirations(String inspirations) {
         this.inspirations = inspirations;
     }
-    public Text getInspirations() {
+    public String getInspirations() {
         return inspirations;
     }
 }

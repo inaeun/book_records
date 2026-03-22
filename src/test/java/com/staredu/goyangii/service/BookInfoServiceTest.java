@@ -1,13 +1,19 @@
 package com.staredu.goyangii.service;
 
 import com.staredu.goyangii.domain.Bookinfo;
+import com.staredu.goyangii.domain.Records;
 import com.staredu.goyangii.repository.BookInfoRepository;
+import com.staredu.goyangii.repository.RecordsRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @Transactional
@@ -62,6 +68,25 @@ class BookInfoServiceTest {
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 도서입니다.");
 
         //Then
+    }
+
+    @Test
+    void 기록_등록() throws Exception {
+
+        //Given
+        Records records = new Records();
+        records.setDate(new Date());
+        records.setPages(0);
+        records.setInspirations("");
+
+        //When
+        Long saveId = RecordsService.join(records);
+
+        //Then
+        //작업 필요!!!
+        //Records findRecords = RecordsRepository.findById(saveId).get();
+        //assertThat(findRecords.getBookname()).isEqualTo(records.getBookname());
+
     }
 
 

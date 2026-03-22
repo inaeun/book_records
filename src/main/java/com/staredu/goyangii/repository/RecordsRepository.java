@@ -1,8 +1,15 @@
 package com.staredu.goyangii.repository;
 
+import com.staredu.goyangii.domain.Bookinfo;
 import com.staredu.goyangii.domain.Records;
 
-public class RecordsRepository {
+import java.util.List;
+import java.util.Optional;
 
+public interface RecordsRepository {
 
+    Records save(Records records);
+    Optional<Records> findById(Long id);
+    Optional<Records> findByBookname(String bookname);
+    List<Records> findAll();
 }
