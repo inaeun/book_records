@@ -21,10 +21,12 @@ public class SpringConfig {
 
     private final MemberRepository memberRepository;
     private final BookInfoRepository bookInfoRepository;
+    private final RecordsRepository recordsRepository;
 
-    public SpringConfig(MemberRepository memberRepository, BookInfoRepository bookInfoRepository) {
+    public SpringConfig(MemberRepository memberRepository, BookInfoRepository bookInfoRepository, RecordsRepository recordsRepository) {
         this.memberRepository = memberRepository;
         this.bookInfoRepository = bookInfoRepository;
+        this.recordsRepository = recordsRepository;
     }
 
     @Bean

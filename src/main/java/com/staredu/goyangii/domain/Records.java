@@ -1,21 +1,30 @@
 package com.staredu.goyangii.domain;
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import org.attoparser.dom.Text;
 
 import java.util.Date;
 
+@Entity
 public class Records {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Date date;
     private Integer pages;
     private String inspirations;
 
     @ManyToOne
-    @JoinColumn(name = "Bookinfo_bookname")
+    @JoinColumn(name = "bookinfo_id")
     private Bookinfo bookinfo;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public void setDate(Date date) {
         this.date = date;
@@ -37,4 +46,5 @@ public class Records {
     public String getInspirations() {
         return inspirations;
     }
+
 }

@@ -2,6 +2,9 @@ package com.staredu.goyangii.service;
 
 
 import com.staredu.goyangii.domain.Records;
+import com.staredu.goyangii.repository.MemberRepository;
+import com.staredu.goyangii.repository.RecordsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,8 +12,29 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RecordsService {
 
+    private final MemberRepository memberRepository;
+    private final RecordsRepository recordsRepository;
 
-    public static Long join(Records records) {
-        return RecordsService.join(records);
+    @Autowired
+    public RecordsService(MemberRepository memberRepository, RecordsRepository recordsRepository) {
+        this.memberRepository = memberRepository;
+        this.recordsRepository = recordsRepository;
     }
+
+    /**
+     * 기록 추가
+     */
+    public Long join(Records records) {
+
+        //validateDuplicateRecords(records);
+        recordsRepository.save(records);
+        return records.getId();
+
+
+    }
+
+//    private void validateDuplicateRecords(Records records) {
+//        recordsRepository.findByDate(records.getInspirations())
+//
+//    }
 }

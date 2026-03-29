@@ -27,6 +27,12 @@ class BookInfoServiceTest {
     @Autowired
     BookInfoRepository bookInfoRepository;
 
+    @Autowired
+    RecordsService  recordsService;
+
+    @Autowired
+    RecordsRepository recordsRepository;
+
 
 
     @Test
@@ -80,12 +86,12 @@ class BookInfoServiceTest {
         records.setInspirations("");
 
         //When
-        Long saveId = RecordsService.join(records);
+        Long saveId = recordsService.join(records);
 
         //Then
         //작업 필요!!!
-        //Records findRecords = RecordsRepository.findById(saveId).get();
-        //assertThat(findRecords.getBookname()).isEqualTo(records.getBookname());
+        Records findRecords = recordsRepository.findById(saveId).get();
+        assertThat(findRecords.getDate()).isEqualTo(records.getDate());
 
     }
 
