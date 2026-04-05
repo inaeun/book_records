@@ -81,7 +81,7 @@ class BookInfoServiceTest {
 
         //Given
         Records records = new Records();
-        records.setDate(new Date());
+        records.setDate(LocalDate.now());
         records.setPages(0);
         records.setInspirations("");
 
@@ -89,7 +89,6 @@ class BookInfoServiceTest {
         Long saveId = recordsService.join(records);
 
         //Then
-        //작업 필요!!!
         Records findRecords = recordsRepository.findById(saveId).get();
         assertThat(findRecords.getDate()).isEqualTo(records.getDate());
 

@@ -1,8 +1,8 @@
 package com.staredu.goyangii.domain;
 
 import jakarta.persistence.*;
-import org.attoparser.dom.Text;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -10,7 +10,7 @@ public class Records {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date date;
+    private LocalDate date;
     private Integer pages;
     private String inspirations;
 
@@ -26,10 +26,10 @@ public class Records {
         this.id = id;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div class="container">
+    <form action="/records/new" method="post">
+        <div class="form-group">
+            <label for="date">날짜</label>
+            <input type="date" id="date" name="date" placeholder="읽은 날짜를 입력하세요">
+            <label for="pages">쪽수</label>
+            <input type="number" id="pages" name="pages" placeholder="읽은 쪽수를 입력하세요">
+            <label for="inspirations">느낀점</label>
+            <input type="text" id="inspirations" name="inspirations" placeholder="느낀점을 입력하세요">
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+</body>
+
+</html>

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class RecordsService {
@@ -31,6 +33,14 @@ public class RecordsService {
         return records.getId();
 
 
+    }
+
+    /**
+     * 전체 기록 조회
+     */
+    public List<Records> findRecords() {
+
+        return recordsRepository.findAll();
     }
 
 //    private void validateDuplicateRecords(Records records) {
