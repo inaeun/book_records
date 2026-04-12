@@ -23,15 +23,14 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>제목 작가 장르</th>
+                <th>제목 날짜 쪽수 느낀점</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="bookinfos : ${bookinfos}">
-                <td th:text="${bookinfos.id}"></td>
-                <td th:text="${bookinfos.bookname}"></td>
-                <td th:text="${bookinfos.author}"></td>
-                <td th:text="${bookinfos.genre}"></td>
+            <tr th:each="records : ${records}">
+                <td th:text="${records.date}"></td>
+                <td th:text="${records.pages}"></td>
+                <td th:text="${records.inspirations}"></td>
             </tr>
             </tbody>
         </table>
