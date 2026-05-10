@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -48,5 +49,14 @@ public class BookInfoController {
         model.addAttribute("bookinfos", bookinfos);
 
         return "bookinfos/bookinfoList";
+    }
+
+    @GetMapping(value = "bookinfos2")
+    @ResponseBody
+    public List<Bookinfo> list2(Model model) {
+
+        List<Bookinfo> bookinfos = bookInfoService.findBookinfo();
+        model.addAttribute("bookinfos", bookinfos);
+        return bookinfos;
     }
 }

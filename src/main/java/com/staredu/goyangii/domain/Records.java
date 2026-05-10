@@ -47,4 +47,11 @@ public class Records {
         return inspirations;
     }
 
+    public Bookinfo getBookinfo() {
+        return bookinfo;
+    }
+
+    public void setBookinfo(Bookinfo bookinfo) {
+        this.bookinfo = bookinfo;
+    }
 }

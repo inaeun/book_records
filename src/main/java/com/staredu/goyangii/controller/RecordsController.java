@@ -29,6 +29,7 @@ public class RecordsController {
     public String create(RecordsForm form) {
 
         Records records = new Records();
+        records.set(form.getId());
         records.setDate(form.getDate());
         records.setPages(form.getPages());
         records.setInspirations(form.getInspirations());
