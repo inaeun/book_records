@@ -3,6 +3,7 @@ package com.staredu.goyangii.controller;
 import com.staredu.goyangii.domain.Bookinfo;
 import com.staredu.goyangii.domain.Records;
 import com.staredu.goyangii.controller.RecordsForm;
+import com.staredu.goyangii.repository.BookInfoRepository;
 import com.staredu.goyangii.service.BookInfoService;
 //import com.staredu.goyangii.service.MemberService;
 import com.staredu.goyangii.service.RecordsService;
@@ -20,6 +21,9 @@ public class RecordsController {
     private RecordsService recordsService;
 
     @Autowired
+    BookInfoRepository bookInfoRepository;
+
+    @Autowired
     public RecordsController(RecordsService recordsService) { this.recordsService = recordsService; }
 
     @GetMapping(value = "/records/new")
@@ -29,7 +33,9 @@ public class RecordsController {
     public String create(RecordsForm form) {
 
         Records records = new Records();
-        records.set(form.getId());
+        Bookinfo findBookInfo = bookInfoRepository.findById(form.getId()).get();
+        //records.setId(form.getId());
+        records.setBookinfo(findBookInfo);
         records.setDate(form.getDate());
         records.setPages(form.getPages());
         records.setInspirations(form.getInspirations());

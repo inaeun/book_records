@@ -28,6 +28,7 @@
             </thead>
             <tbody>
             <tr th:each="records : ${records}">
+                <td th:text="${records.bookinfo.bookname}"></td>
                 <td th:text="${records.date}"></td>
                 <td th:text="${records.pages}"></td>
                 <td th:text="${records.inspirations}"></td>
